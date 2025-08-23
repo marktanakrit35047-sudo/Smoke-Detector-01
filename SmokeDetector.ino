@@ -4,7 +4,7 @@
 #include <WiFiUdp.h>
 #include <NTPClient.h>
 #include <time.h>
-#include <DHT.h> // << เพิ่มเข้ามา: Library สำหรับ DHT
+#include <DHT.h> 
 
 // ==== Blynk ====
 #define BLYNK_TEMPLATE_ID "TMPL644AjGP2l"
@@ -25,7 +25,7 @@ const char* USER_ID = "U06e16c9d93ba93b160a45386992ad065";
 #define MQ2_PIN    A0
 #define LED_PIN    D2
 #define BUZZER_PIN D5
-#define DHT_PIN    D4   // << เพิ่มเข้ามา: กำหนดขาสำหรับ DHT22
+#define DHT_PIN    D4   
 
 // ==== Settings ====
 const int SMOKE_THRESHOLD = 550;
@@ -39,16 +39,16 @@ bool notificationSent = false;
 
 // ==== NTP ====
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "pool.ntp.org", 7 * 3600, 60000); // GMT+7
+NTPClient timeClient(ntpUDP, "pool.ntp.org", 7 * 3600, 60000); 
 
 // ==== Blynk ====
 char auth[] = BLYNK_AUTH_TOKEN;
 
-// ==== DHT Sensor ==== // << เพิ่มเข้ามา
+
 #define DHT_TYPE DHT22
 DHT dht(DHT_PIN, DHT_TYPE);
 
-// ====================== FUNCTION ======================
+
 void sendLineMessage(String message) {
   client.setInsecure();
   Serial.println("Connecting to LINE API...");
@@ -92,7 +92,7 @@ void sendLineMessage(String message) {
   Serial.println("Request finished.");
 }
 
-// ====================== SETUP ======================
+
 void setup() {
   Serial.begin(115200);
   pinMode(LED_PIN, OUTPUT);
@@ -100,7 +100,7 @@ void setup() {
   digitalWrite(LED_PIN, LOW);
   digitalWrite(BUZZER_PIN, HIGH); // Active Low
 
-  dht.begin(); // << เพิ่มเข้ามา: เริ่มการทำงานของ DHT sensor
+  dht.begin(); 
 
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("Connecting to Wi-Fi");
@@ -123,21 +123,21 @@ void setup() {
   Serial.println("Sensor is ready.");
 }
 
-// ====================== LOOP ======================
+
 void loop() {
   Blynk.run();
 
-  // --- Read MQ-2 Smoke Sensor ---
+ 
   int sensorValue = analogRead(MQ2_PIN);
   Serial.print("Current Smoke Level: ");
   Serial.println(sensorValue);
-  Blynk.virtualWrite(V0, sensorValue); // ส่งค่าควันไป Blynk ที่ Virtual Pin V0
+  Blynk.virtualWrite(V0, sensorValue); 
 
-  // --- Read DHT22 Temperature & Humidity --- // << เพิ่มเข้ามา
+  
   float humidity = dht.readHumidity();
   float temperature = dht.readTemperature();
 
-  // ตรวจสอบว่าอ่านค่าได้หรือไม่ (บางครั้งการอ่านล้มเหลว)
+  
   if (isnan(humidity) || isnan(temperature)) {
     Serial.println("Failed to read from DHT sensor!");
   } else {
@@ -148,12 +148,12 @@ void loop() {
     Serial.print(temperature);
     Serial.println(" *C");
     
-    // ส่งค่าอุณหภูมิและความชื้นไป Blynk
-    Blynk.virtualWrite(V1, temperature); // ส่งค่าอุณหภูมิไป Blynk ที่ Virtual Pin V1
-    Blynk.virtualWrite(V2, humidity);    // ส่งค่าความชื้นไป Blynk ที่ Virtual Pin V2
+    
+    Blynk.virtualWrite(V1, temperature); 
+    Blynk.virtualWrite(V2, humidity);    
   }
 
-  // --- Check for Smoke ---
+  
   if (sensorValue > SMOKE_THRESHOLD) {
     digitalWrite(LED_PIN, HIGH);
     digitalWrite(BUZZER_PIN, LOW);
@@ -166,7 +166,7 @@ void loop() {
       char timeString[30];
       strftime(timeString, sizeof(timeString), "%d/%m/%Y %H:%M:%S", timeInfo);
 
-      // << เพิ่มเข้ามา: อัปเดตข้อความแจ้งเตือนให้มีค่าอุณหภูมิและความชื้น
+     
       String msg = "🚨 ตรวจพบควัน! 🚨\n"
                    "เวลา: " + String(timeString) + "\n"
                    "ค่าควัน: " + String(sensorValue) + "\n"
