@@ -6,7 +6,7 @@
 #include <time.h>
 #include <DHT.h> 
 
-// ==== Blynk ====
+
 #define BLYNK_TEMPLATE_ID "TMPL644AjGP2l"
 #define BLYNK_TEMPLATE_NAME "Smoke Detector"
 #define BLYNK_AUTH_TOKEN  "byRo8COVYn_WUOwl_jW6JJG5NIjzF7wz"
@@ -14,34 +14,34 @@
 #define BLYNK_PRINT Serial
 #include <BlynkSimpleEsp8266.h>
 
-// ==== WiFi & LINE ====
+
 const char* WIFI_SSID = "P3M.ekn";
 const char* WIFI_PASSWORD = "Muek9655";
 
 const char* CHANNEL_ACCESS_TOKEN = "1KVtTmIhNXgVnVAEioMfLz/COYllJK2w57vEeS+/QbaV/GOTWzGNiA0d23MT2xkMgg7eXQeDV3XFuq6Go2Rwje/+S3e5kNuAuyLqsTp/jjpmcRhMYg+yaL23aVX0bZEzNxzwqldpUA92qOj/+JTGhQdB04t89/1O/w1cDnyilFU=";
 const char* USER_ID = "U06e16c9d93ba93b160a45386992ad065";
 
-// ==== Pins ====
+
 #define MQ2_PIN    A0
 #define LED_PIN    D2
 #define BUZZER_PIN D5
 #define DHT_PIN    D4   
 
-// ==== Settings ====
+
 const int SMOKE_THRESHOLD = 550;
 const int LOOP_DELAY = 5000;
 const int SENSOR_WARMUP_TIME = 20000;
 
-// ==== LINE ====
+
 const char* LINE_API_HOST = "api.line.me";
 WiFiClientSecure client;
 bool notificationSent = false;
 
-// ==== NTP ====
+
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org", 7 * 3600, 60000); 
 
-// ==== Blynk ====
+
 char auth[] = BLYNK_AUTH_TOKEN;
 
 
