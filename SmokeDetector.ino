@@ -45,8 +45,7 @@ const char* WIFI_PASSWORD = "Muek9655";
 // --- LINE Notify ---
 
 const char* CHANNEL_ACCESS_TOKEN = "1KVtTmIhNXgVnVAEioMfLz/COYllJK2w57vEeS+/QbaV/GOTWzGNiA0d23MT2xkMgg7eXQeDV3XFuq6Go2Rwje/+S3e5kNuAuyLqsTp/jjpmcRhMYg+yaL23aVX0bZEzNxzwqldpUA92qOj/+JTGhQdB04t89/1O/w1cDnyilFU=";
-
-const char* USER_ID = "U06e16c9d93ba93b160a45386992ad065";
+const char* USER_ID = "C60b991465593c46b5a175f7e238f00b3"; // ใส่ Group ID ที่นี่
 
 const char* LINE_API_HOST = "api.line.me";
 
