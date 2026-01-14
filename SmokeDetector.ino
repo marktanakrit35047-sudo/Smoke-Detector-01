@@ -16,7 +16,7 @@
 
 
 
-// --- Blynk ---
+
 
 #define BLYNK_TEMPLATE_ID "TMPL644AjGP2l"
 
@@ -34,7 +34,7 @@ char auth[] = BLYNK_AUTH_TOKEN;
 
 
 
-// --- WiFi ---
+// เชื่อมต่อไวฟาย
 
 const char* WIFI_SSID = "P3M.ekn";
 
@@ -42,7 +42,7 @@ const char* WIFI_PASSWORD = "Muek9655";
 
 
 
-// --- LINE Notify ---
+// ระบบการแจ้งเตือนไลน์
 
 const char* CHANNEL_ACCESS_TOKEN = "1KVtTmIhNXgVnVAEioMfLz/COYllJK2w57vEeS+/QbaV/GOTWzGNiA0d23MT2xkMgg7eXQeDV3XFuq6Go2Rwje/+S3e5kNuAuyLqsTp/jjpmcRhMYg+yaL23aVX0bZEzNxzwqldpUA92qOj/+JTGhQdB04t89/1O/w1cDnyilFU=";
 const char* USER_ID = "C60b991465593c46b5a175f7e238f00b3"; // ใส่ Group ID ที่นี่
@@ -55,17 +55,17 @@ bool notificationSent = false;
 
 
 
-// --- Google Sheet (Web App) ---
+// ส่งค่าสถานะไปยังspreedsheet
 
 const char* GAPP_SCRIPT_HOST = "script.google.com";
 
-// ID ที่คุณให้มา:
+
 
 String GAPP_SCRIPT_ID = "AKfycbz6oKyB6x7xn8p-1oTcT9M1_BY5WjfX4oe6l82h2YQZeiPLXePmDcXqanR1VO8o4m2elw";
 
 
 
-// --- Pins ---
+// เซนเซอร์ต่างๆเชื่อมกับบอร์ดช่องใดบ้าง
 
 #define MQ2_PIN A0
 
@@ -77,7 +77,7 @@ String GAPP_SCRIPT_ID = "AKfycbz6oKyB6x7xn8p-1oTcT9M1_BY5WjfX4oe6l82h2YQZeiPLXeP
 
 
 
-// --- Sensor Settings ---
+// การตั้งค่าsensor
 
 const int SMOKE_THRESHOLD = 550;
 
@@ -87,7 +87,7 @@ const int SENSOR_WARMUP_TIME = 20000;
 
 
 
-// --- NTP (Time) ---
+// ตั้งค่าดีเลย์
 
 WiFiUDP ntpUDP;
 
@@ -95,7 +95,7 @@ NTPClient timeClient(ntpUDP, "pool.ntp.org", 7 * 3600, 60000);
 
 
 
-// --- DHT Sensor ---
+// เซนเซอรวัดค่าอุณหภูมิความชื้น-
 
 #define DHT_TYPE DHT22
 
